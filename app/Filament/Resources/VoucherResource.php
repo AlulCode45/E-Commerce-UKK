@@ -28,6 +28,8 @@ class VoucherResource extends Resource
                 Forms\Components\TextInput::make('kode_voucher')
                     ->required(),
                 Forms\Components\TextInput::make('persen')
+                    ->maxValue(100)
+                    ->minValue(0)
                     ->required()
                     ->numeric(),
                 Forms\Components\TextInput::make('jumlah')

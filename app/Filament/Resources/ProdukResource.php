@@ -27,7 +27,7 @@ class ProdukResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('nama_produk')
                     ->required(),
-                Forms\Components\Textarea::make('deskripsi')
+                Forms\Components\MarkdownEditor::make('deskripsi')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('harga_produk')
                     ->required()
@@ -38,6 +38,7 @@ class ProdukResource extends Resource
                 Forms\Components\Select::make('kategori_id')
                     ->searchable()
                     ->preload()
+                    ->columnSpanFull()
                     ->relationship('kategori', 'kategori')
             ]);
     }
@@ -72,6 +73,7 @@ class ProdukResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
