@@ -96,20 +96,20 @@
                             <div class="col-sm-4">
                                 <figure>
                                     <span class="ribbon off">-30%</span>
-                                    <a href="{{ asset('product-detail-1.html') }}">
+                                    <a href="/produk/{{$produk->id}}">
                                         <img class="img-fluid lazy"
                                              src="{{asset('img/products/product_placeholder_square_medium.jpg') }}"
                                              data-src="{{asset('/storage/'.$produk->foto_produk) }}" alt="">
                                     </a>
                                     <div data-countdown="2019/05/15" class="countdown"></div>
-                                </figure>
                             </div>
+                                </figure>
                             <div class="col-sm-8">
                                 <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
                                         class="icon-star voted"></i><i class="icon-star voted"></i><i
                                         class="icon-star"></i>
                                 </div>
-                                <a href="{{ asset('product-detail-1.html') }}">
+                                <a href="/produk/{{$produk->id}}">
                                     <h3>{{ $produk->nama_produk }}</h3>
                                 </a>
                                 <p>
