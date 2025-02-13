@@ -23,6 +23,9 @@ class ProdukResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('foto_produk')
+                    ->columnSpanFull()
+                    ->image(),
                 Forms\Components\TextInput::make('kode_produk')
                     ->required(),
                 Forms\Components\TextInput::make('nama_produk')
@@ -36,6 +39,7 @@ class ProdukResource extends Resource
                     ->required()
                     ->numeric(),
                 Forms\Components\Select::make('kategori_id')
+                    ->required()
                     ->searchable()
                     ->preload()
                     ->columnSpanFull()
@@ -47,6 +51,7 @@ class ProdukResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('foto_produk'),
                 Tables\Columns\TextColumn::make('kode_produk')
                     ->badge()
                     ->searchable(),

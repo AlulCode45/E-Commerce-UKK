@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
+            $table->string('foto_produk')->nullable();
             $table->string('kode_produk');
             $table->string('nama_produk');
             $table->text('deskripsi')->nullable();
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
