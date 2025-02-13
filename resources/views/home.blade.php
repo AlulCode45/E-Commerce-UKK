@@ -102,8 +102,8 @@
                                              data-src="{{asset('/storage/'.$produk->foto_produk) }}" alt="">
                                     </a>
                                     <div data-countdown="2019/05/15" class="countdown"></div>
-                            </div>
                                 </figure>
+                            </div>
                             <div class="col-sm-8">
                                 <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
                                         class="icon-star voted"></i><i class="icon-star voted"></i><i
