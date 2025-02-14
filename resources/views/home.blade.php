@@ -13,30 +13,14 @@
                             <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">Categories</a></h4>
                             <div class="collapse show" id="filter_1">
                                 <ul>
-                                    <li>
-                                        <label class="container_check">Men <small>12</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">Women <small>24</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">Running <small>23</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">Training <small>11</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
+                                    @foreach($kategoris as $kategori)
+                                        <li>
+                                            <label class="container_check">{{ $kategori->kategori }}
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- /filter_type -->
@@ -93,24 +77,6 @@
                         </div>
                     @endforeach
                     <!-- /row_item -->
-                    <div class="pagination__wrapper">
-                        <ul class="pagination">
-                            <li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
-                            <li>
-                                <a href="#0" class="active">1</a>
-                            </li>
-                            <li>
-                                <a href="#0">2</a>
-                            </li>
-                            <li>
-                                <a href="#0">3</a>
-                            </li>
-                            <li>
-                                <a href="#0">4</a>
-                            </li>
-                            <li><a href="#0" class="next" title="next page">&#10095;</a></li>
-                        </ul>
-                    </div>
                 </div>
                 <!-- /col -->
             </div>
