@@ -6,11 +6,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class,'index']);
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/login', [\App\Http\Controllers\AuthController::class,'login']);
+Route::post('/login', [\App\Http\Controllers\AuthController::class,'loginProcess']);
+
+
 
 Route::get('/produk/{produk}', [ProdukCOntroller::class,'show']);
 
-
-Route::get('/customer', [CustomerController::class,'index']);
+Route::middleware(\App\Http\Middleware\AuthMiddleware::class)->group(function () {
+    Route::get('/customer', [CustomerController::class,'index']);
+});

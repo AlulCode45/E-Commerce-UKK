@@ -84,7 +84,8 @@
 
     <main>
         <div class="container">
-            <form class="my-5">
+            <form class="my-5" action="/login" method="POST">
+                @csrf
                 <div class="sign-in-wrapper">
                     <div class="form-group">
                         <label>Email</label>
@@ -101,7 +102,6 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <div class="float-end mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
                     </div>
                     <div class="text-center">
                         <input type="submit" value="Log In" class="btn_1 full-width">
