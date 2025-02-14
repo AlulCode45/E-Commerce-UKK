@@ -42,38 +42,6 @@
                             <!-- /filter_type -->
                         </div>
                         <!-- /filter_type -->
-                        <div class="filter_type version_2">
-                            <h4><a href="#filter_4" data-bs-toggle="collapse" class="closed">Price</a></h4>
-                            <div class="collapse show" id="filter_4">
-                                <ul>
-                                    <li>
-                                        <label class="container_check">$0 — $50<small>11</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">$50 — $100<small>08</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">$100 — $150<small>05</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="container_check">$150 — $200<small>18</small>
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /filter_type -->
                         <div class="buttons">
                             <a href="#0" class="btn_1">Filter</a> <a href="#0" class="btn_1 gray">Reset</a>
                         </div>
