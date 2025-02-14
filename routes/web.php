@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,3 +11,6 @@ Route::get('/login', function () {
 });
 
 Route::get('/produk/{produk}', [ProdukCOntroller::class,'show']);
+
+
+Route::get('/customer', [CustomerController::class,'index']);
