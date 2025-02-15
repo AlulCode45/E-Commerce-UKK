@@ -10,14 +10,6 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-inbox"></i>
-                                </span>
-                    <span class="title">Pesanan Saya</span>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

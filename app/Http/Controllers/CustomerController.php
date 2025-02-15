@@ -8,6 +8,6 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('layouts.dashboard-layout');
+        return view('dashboard-user.dashboard');
     }
 }
