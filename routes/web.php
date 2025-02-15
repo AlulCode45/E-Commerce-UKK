@@ -14,5 +14,9 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class,'loginProcess
 Route::get('/produk/{produk}', [ProdukCOntroller::class,'show']);
 
 Route::middleware(\App\Http\Middleware\AuthMiddleware::class)->group(function () {
+    Route::get('/logout',[\App\Http\Controllers\AuthController::class,'logout']);
+
+
     Route::get('/customer', [CustomerController::class,'index']);
 });
+
