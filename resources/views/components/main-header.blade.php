@@ -28,9 +28,15 @@
             </nav>
             <div class="col-xl-3 col-lg-2 d-lg-flex justify-content-end py-3">
                 <div class="main-menu">
-                    <a href="/login" class="btn btn-transparent border border-white text-white rounded-pill">
-                        Sign-In
-                    </a>
+                    @if(!auth()->user())
+                        <a href="/login" class="btn btn-transparent border border-white text-white rounded-pill">
+                            Sign-In
+                        </a>
+                    @else
+                        <a href="/customer" class="btn btn-transparent border border-white text-white rounded-pill">
+                            Dashboard
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
