@@ -12,7 +12,9 @@
                         <h6 class="pb-2">Metode Pembayaran</h6>
                         <ul>
                             <li>
-                                <label class="container_radio">Bank Transfer<a href="#0" class="info" data-bs-toggle="modal" data-bs-target="#payments_method"></a>
+                                <label class="container_radio">Bank Transfer<a href="#0" class="info"
+                                                                               data-bs-toggle="modal"
+                                                                               data-bs-target="#payments_method"></a>
                                     <input type="radio" name="payment" value="transfer" checked>
                                     <span class="checkmark"></span>
                                 </label>
@@ -39,23 +41,25 @@
                         <h3>2. Konfirmasi Checkout</h3>
                         <div class="box_general summary">
                             <ul>
-                                <li class="clearfix"><em>1x Armor Air X Fear</em>  <span>$145.00</span></li>
-                                <li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li>
+                                @for($i = 0; $i < $qty; $i++)
+                                    <li class="clearfix"><em>{{ $produk->nama_produk }}</em>
+                                        <span>Rp. {{ $produk->harga_produk }}</span></li>
+                                @endfor
                             </ul>
                             <ul>
-                                <li class="clearfix"><em><strong>Subtotal</strong></em>  <span>$450.00</span></li>
-                                <li class="clearfix"><em><strong>Shipping</strong></em> <span>$0</span></li>
+                                <li class="clearfix"><em><strong>Subtotal</strong></em>
+                                    <span>Rp. {{ $produk->harga_produk * $qty }}</span></li>
+
+                                @if($voucher)
+                                    <li class="clearfix"><em><strong>Voucher ( <b>{{ $voucher->nama }} - {{ $voucher->persen }}%</b> )</strong></em> <span>Rp. {{ ((($produk->harga_produk * $qty) * $voucher->persen) / 100) }}</span></li>
+                                @endif
 
                             </ul>
-                            <div class="total clearfix">TOTAL <span>$450.00</span></div>
-                            <div class="form-group">
-                                <label class="container_check">Register to the Newsletter.
-                                    <input type="checkbox" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                            <div class="total clearfix">TOTAL <span>Rp. {{ ($produk->harga_produk * $qty) - ((($produk->harga_produk * $qty) * $voucher->persen) / 100) }}</span></div>
+                            <span>Bukti Pembayaran</span>
+                            <input type="file" name="bukti_pembayaran" class="form-control mb-3">
 
-                            <a href="confirm.html" class="btn_1 full-width">Confirm and Pay</a>
+                            <a href="/checkout-done" class="btn_1 full-width">Confirm and Pay</a>
                         </div>
                         <!-- /box_general -->
                     </div>
@@ -68,7 +72,8 @@
     </main>
 
     <!-- Modal Payments Method-->
-    <div class="modal fade" id="payments_method" tabindex="-1" role="dialog" aria-labelledby="payments_method_title" aria-hidden="true">
+    <div class="modal fade" id="payments_method" tabindex="-1" role="dialog" aria-labelledby="payments_method_title"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">

@@ -11,12 +11,13 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class,'loginProcess
 
 
 
-Route::get('/produk/{produk}', [ProdukCOntroller::class,'show']);
+Route::get('/produk/{produk}', [ProdukController::class,'show']);
 
 Route::middleware(\App\Http\Middleware\AuthMiddleware::class)->group(function () {
     Route::get('/logout',[\App\Http\Controllers\AuthController::class,'logout']);
 
-    Route::get('checkout',[\App\Http\Controllers\CheckoutController::class,'checkoutPage']);
+    Route::post('checkout',[\App\Http\Controllers\CheckoutController::class,'checkoutPage']);
+    Route::get('checkout-done', [\App\Http\Controllers\CheckoutController::class,'checkoutDone']);
     Route::get('/customer', [CustomerController::class,'index']);
 });
 
