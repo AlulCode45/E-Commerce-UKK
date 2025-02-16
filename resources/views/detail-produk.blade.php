@@ -38,32 +38,38 @@
                         </div>
                     </div>
                     <div class="col-lg-5">
-                        <div class="prod_options version_2">
-                            <div class="d-flex align-items-center mt-2">
-                                <label class="col-xl-7 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
-                                <div class="col-xl-5 col-lg-5 col-md-6 col-6">
-                                    <div class="numbers-row">
-                                        <input type="text" value="1" id="quantity_1" class="qty2" name="quantity_1">
-                                        <div class="inc button_inc">+</div>
-                                        <div class="dec button_inc">-</div>
+                        <form action="/checkout" method="post">
+                            @csrf
+                            <input type="hidden" name="produk_id" value="{{ $produk->id }}"/>
+                            <div class="prod_options version_2">
+                                <div class="d-flex align-items-center mt-2">
+                                    <label class="col-xl-7 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
+                                    <div class="col-xl-5 col-lg-5 col-md-6 col-6">
+                                        <div class="numbers-row">
+                                            <input type="text" value="1" id="quantity_1" class="qty2" name="qty">
+                                            <div class="inc button_inc">+</div>
+                                            <div class="dec button_inc">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mt-2">
+                                    <label class="col-xl-7 col-lg-5  col-md-6 col-6"><strong>Voucher</strong></label>
+                                    <div class="col-xl-5 col-lg-5 col-md-6 col-6">
+                                        <input type="text" name="kode_voucher" id="" class="form-control" placeholder="Kode Voucher">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-lg-7 col-md-6">
+                                        <div class="price_main"><span class="new_price">Rp. {{ $produk->harga_produk }}</span></div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="btn_add_to_cart">
+                                            <button class="btn_1" type="submit">Checkout</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center mt-2">
-                                <label class="col-xl-7 col-lg-5  col-md-6 col-6"><strong>Voucher</strong></label>
-                                <div class="col-xl-5 col-lg-5 col-md-6 col-6">
-                                    <input type="text" name="" id="" class="form-control" placeholder="Kode Voucher">
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-7 col-md-6">
-                                    <div class="price_main"><span class="new_price">Rp. {{ $produk->harga_produk }}</span></div>
-                                </div>
-                                <div class="col-lg-5 col-md-6">
-                                    <div class="btn_add_to_cart"><a href="#0" class="btn_1">Checkout</a></div>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /row -->
