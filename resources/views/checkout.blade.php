@@ -66,11 +66,15 @@
 
                             </ul>
                             <form action="/checkout-process" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="produk_id" value="{{ $produk->id }}">
+                                <input type="hidden" name="voucher_id" value="{{ $voucher->id }}">
+                                <input type="hidden" name="qty" value="{{ $qty }}">
                                 <div class="total clearfix">TOTAL <span>Rp. {{ ($produk->harga_produk * $qty) - $diskon }}</span></div>
                                 <span>Bukti Pembayaran</span>
                                 <input type="file" name="bukti_pembayaran" class="form-control mb-3">
-
                                 <button type="submit" class="btn_1 full-width">Confirm and Pay</button>
+
                             </form>
                         </div>
                         <!-- /box_general -->

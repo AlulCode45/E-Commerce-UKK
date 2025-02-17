@@ -19,10 +19,28 @@ class CheckoutController extends Controller
 
     public function checkoutProcess(Request $request)
     {
+
+        if($request->file('bukti_pembayaran')){
+            $file = $request->file('bukti_pembayaran');
+            $nama_file = time()."_".$file->getClientOriginalName();
+            $tujuan_upload = 'bukti_pembayaran';
+            $file->move($tujuan_upload,$nama_file);
+        }else{
+            return back()->with('error','Terjadi Kesalahan');
+        }
         $saveCheckout = Penjualan::create([
             'produk_id' => $request->produk_id,
-            ''
+            'voucher_id' => $request->voucher_id,
+            'user_id' => auth()->user()->id,
+            'qty' => $request->qty,
+            'bukti_pembayaran' => 'bukti_pembayaran/'.$nama_file,
         ]);
+
+        if ($saveCheckout){
+            return redirect()->to('/checkout-done');
+        }else{
+            return back()->with('error','Terjadi Kesalahan');
+        }
     }
     public function checkoutDone()
     {
