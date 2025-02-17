@@ -50,16 +50,28 @@
                                 <li class="clearfix"><em><strong>Subtotal</strong></em>
                                     <span>Rp. {{ $produk->harga_produk * $qty }}</span></li>
 
+
+                                @php
+                                    $diskon = 0;
+                                @endphp
                                 @if($voucher)
-                                    <li class="clearfix"><em><strong>Voucher ( <b>{{ $voucher->nama }} - {{ $voucher->persen }}%</b> )</strong></em> <span>Rp. {{ ((($produk->harga_produk * $qty) * $voucher->persen) / 100) }}</span></li>
+                                    @php
+                                        $diskon = ((($produk->harga_produk * $qty) * $voucher->persen) / 100);
+                                    @endphp
+                                    <li class="clearfix"><em><strong>Voucher ( <b>{{ $voucher->nama }}
+                                                    - {{ $voucher->persen }}%</b> )</strong></em>
+                                        <span>Rp. {{ $diskon }}</span>
+                                    </li>
                                 @endif
 
                             </ul>
-                            <div class="total clearfix">TOTAL <span>Rp. {{ ($produk->harga_produk * $qty) - ((($produk->harga_produk * $qty) * $voucher->persen) / 100) }}</span></div>
-                            <span>Bukti Pembayaran</span>
-                            <input type="file" name="bukti_pembayaran" class="form-control mb-3">
+                            <form action="/checkout-process" method="post" enctype="multipart/form-data">
+                                <div class="total clearfix">TOTAL <span>Rp. {{ ($produk->harga_produk * $qty) - $diskon }}</span></div>
+                                <span>Bukti Pembayaran</span>
+                                <input type="file" name="bukti_pembayaran" class="form-control mb-3">
 
-                            <a href="/checkout-done" class="btn_1 full-width">Confirm and Pay</a>
+                                <button type="submit" class="btn_1 full-width">Confirm and Pay</button>
+                            </form>
                         </div>
                         <!-- /box_general -->
                     </div>

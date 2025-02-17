@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penjualan;
 use App\Models\Produk;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
@@ -16,6 +17,13 @@ class CheckoutController extends Controller
         return view('checkout', compact('produk', 'voucher','qty'));
     }
 
+    public function checkoutProcess(Request $request)
+    {
+        $saveCheckout = Penjualan::create([
+            'produk_id' => $request->produk_id,
+            ''
+        ]);
+    }
     public function checkoutDone()
     {
         return view('checkout-success');
