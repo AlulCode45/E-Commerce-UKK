@@ -23,7 +23,7 @@ class CheckoutController extends Controller
         if($request->file('bukti_pembayaran')){
             $file = $request->file('bukti_pembayaran');
             $nama_file = time()."_".$file->getClientOriginalName();
-            $tujuan_upload = 'bukti_pembayaran';
+            $tujuan_upload = 'storage/bukti_pembayaran';
             $file->move($tujuan_upload,$nama_file);
         }else{
             return back()->with('error','Terjadi Kesalahan');
