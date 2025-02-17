@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <h3 data-bs-target="#collapse_1">AShop </h3>
+                <h3 data-bs-target="#collapse_1">AlseraStore </h3>
                 <div class="collapse dont-collapse-sm links" id="collapse_1">
                     <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea harum hic
                         minus nam nesciunt quisquam saepe suscipit. Ab accusamus, autem delectus eius error, id

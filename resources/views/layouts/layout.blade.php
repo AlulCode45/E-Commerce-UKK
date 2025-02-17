@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Aplikasi Jual Beli Online Terpercaya">
     <meta name="author" content="AlulCode">
-    <title>AShop | Platform Jual Beli Barang Mudah dan Menyenangkan</title>
+    <title>AlseraStore | Platform Jual Beli Barang Mudah dan Menyenangkan</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
