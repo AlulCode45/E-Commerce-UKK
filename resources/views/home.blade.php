@@ -9,9 +9,9 @@
                 <div class="col-lg-12">
                     <div class="top_banner">
                         <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
-                            <div class="container pl-lg-5">
+                            <div class="container  text-center pl-lg-5">
                                 <h1>Selamat Datang di Toko AlseraStore</h1>
-                                <p class="text-white">Penuhi keseharianmu bersama AlseraStore</p>
+                                <h5 class="text-white">Penuhi keseharianmu bersama AlseraStore</h5>
                             </div>
                         </div>
                         <img src="{{asset('img/bg_cat_shoes.jpg') }}" class="img-fluid" alt="">
