@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-lg-7 col-md-6">
-                                        <div class="price_main"><span class="new_price">Rp. {{ $produk->harga_produk }}</span></div>
+                                        <div class="price_main"><span class="new_price">{{ \App\Helpers\RupiahHelper::formatRupiah($produk->harga_produk) }}</span></div>
                                     </div>
                                     <div class="col-lg-5 col-md-6">
                                         <div class="btn_add_to_cart">

@@ -43,12 +43,12 @@
                             <ul>
                                 @for($i = 0; $i < $qty; $i++)
                                     <li class="clearfix"><em>{{ $produk->nama_produk }}</em>
-                                        <span>Rp. {{ $produk->harga_produk }}</span></li>
+                                        <span>{{ \App\Helpers\RupiahHelper::formatRupiah($produk->harga_produk) }}</span></li>
                                 @endfor
                             </ul>
                             <ul>
                                 <li class="clearfix"><em><strong>Subtotal</strong></em>
-                                    <span>Rp. {{ $produk->harga_produk * $qty }}</span></li>
+                                    <span>{{ \App\Helpers\RupiahHelper::formatRupiah($produk->harga_produk * $qty) }}</span></li>
 
 
                                 @php
@@ -60,7 +60,7 @@
                                     @endphp
                                     <li class="clearfix"><em><strong>Voucher ( <b>{{ $voucher->nama }}
                                                     - {{ $voucher->persen }}%</b> )</strong></em>
-                                        <span>Rp. {{ $diskon }}</span>
+                                        <span>{{ \App\Helpers\RupiahHelper::formatRupiah($diskon) }}</span>
                                     </li>
                                 @endif
 
@@ -70,7 +70,7 @@
                                 <input type="hidden" name="produk_id" value="{{ $produk->id }}">
                                 <input type="hidden" name="voucher_id" value="{{ $voucher->id }}">
                                 <input type="hidden" name="qty" value="{{ $qty }}">
-                                <div class="total clearfix">TOTAL <span>Rp. {{ ($produk->harga_produk * $qty) - $diskon }}</span></div>
+                                <div class="total clearfix">TOTAL <span>{{ \App\Helpers\RupiahHelper::formatRupiah(($produk->harga_produk * $qty) - $diskon) }}</span></div>
                                 <span>Bukti Pembayaran</span>
                                 <input type="file" name="bukti_pembayaran" class="form-control mb-3">
                                 <button type="submit" class="btn_1 full-width">Confirm and Pay</button>
