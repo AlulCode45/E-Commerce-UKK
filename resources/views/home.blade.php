@@ -31,7 +31,7 @@
                                     <h3>{{ $produk->nama_produk }}</h3>
                                 </a>
                                 <div class="price_box">
-                                    <span class="new_price">Rp. {{ $produk->harga_produk }}</span>
+                                    <span class="new_price">{{ \App\Helpers\RupiahHelper::formatRupiah($produk->harga_produk) }}</span>
                                 </div>
                             </div>
                             <!-- /grid_item -->
