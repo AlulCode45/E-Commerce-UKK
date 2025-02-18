@@ -1,82 +1,80 @@
 @extends('layouts.layout')
 
 @section('content')
-    <main class="bg_gray">
-        <div class="container margin_30">
-            <div class="page_header">
-                <div class="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Produk</a></li>
-                        <li>{{ $produk->nama_produk }}</li>
-                    </ul>
-                </div>
-                <h1>{{ $produk->nama_produk }}</h1>
-            </div>
-            <!-- /page_header -->
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="owl-carousel owl-theme prod_pics magnific-gallery">
-                        <div class="item">
-                            <a href="{{ asset('storage/'.$produk->foto_produk) }}" title="Photo title"
-                               data-effect="mfp-zoom-in"><img src="{{ asset('storage/'.$produk->foto_produk) }}" alt=""></a>
-                        </div>
-                    </div>
-                    <!-- /carousel -->
-                </div>
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
 
-        <div class="bg_white">
-            <div class="container margin_60_35">
-                <div class="row justify-content-between">
-                    <div class="col-lg-6">
-                        <div class="prod_info version_2">
-                            @markdown($produk->deskripsi)
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <form action="/checkout" method="post">
-                            @csrf
-                            <input type="hidden" name="produk_id" value="{{ $produk->id }}"/>
-                            <div class="prod_options version_2">
-                                <div class="d-flex align-items-center mt-2">
-                                    <label class="col-xl-7 col-lg-5  col-md-6 col-6"><strong>Quantity</strong></label>
-                                    <div class="col-xl-5 col-lg-5 col-md-6 col-6">
-                                        <div class="numbers-row">
-                                            <input type="text" value="1" id="quantity_1" class="qty2" name="qty">
-                                            <div class="inc button_inc">+</div>
-                                            <div class="dec button_inc">-</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center mt-2">
-                                    <label class="col-xl-7 col-lg-5  col-md-6 col-6"><strong>Voucher</strong></label>
-                                    <div class="col-xl-5 col-lg-5 col-md-6 col-6">
-                                        <input type="text" name="kode_voucher" id="" class="form-control" placeholder="Kode Voucher">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-lg-7 col-md-6">
-                                        <div class="price_main"><span class="new_price">{{ \App\Helpers\RupiahHelper::formatRupiah($produk->harga_produk) }}</span></div>
-                                    </div>
-                                    <div class="col-lg-5 col-md-6">
-                                        <div class="btn_add_to_cart">
-                                            <button class="btn_1" type="submit">Checkout</button>
-                                        </div>
-                                    </div>
+
+    <!-- shop-area start -->
+    <section class="shop-details-area pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-4">
+                    <div class="product-details-img mb-10">
+                        <div class="tab-content" id="myTabContentpro">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel">
+                                <div class="product-large-img">
+                                    <img src="{{ '/storage/'.$produk->foto_produk }}" alt="">
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-                <!-- /row -->
+                <div class="col-xl-6 col-lg-8">
+                    <div class="product-details mb-30 pl-30">
+                        <div class="details-cat mb-20">
+                            <a href="#">decor,</a>
+                            <a href="#">furniture</a>
+                        </div>
+                        <h2 class="pro-details-title mb-15">{{ $produk->nama_produk }}</h2>
+                        <div class="details-price mb-20">
+                            <span>{{ \App\Helpers\RupiahHelper::formatRupiah($produk->harga_produk) }}</span>
+                        </div>
+                        <div class="product-variant">
+                            <div class="product-action-details variant-item">
+                                <div class="product-details-action">
+                                    <form action="/checkout" method="post">
+                                        @csrf
+                                        <input type="hidden" value="{{ $produk->id }}" name="produk_id">
+                                        <div class="d-flex">
+                                            <input class="form-control rounded-pill me-3" placeholder="Voucher" name="kode_voucher">
+                                            <div class="plus-minus">
+                                                <div class="cart-plus-minus"><input type="text" value="1" name="qty" /></div>
+                                            </div>
+                                        </div>
+                                        <div class="details-cart mt-40">
+                                            <button class="btn theme-btn" type="submit">purchase now</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-50">
+                <div class="col-xl-8 col-lg-8">
+                    <div class="product-review">
+                        <ul class="nav review-tab" id="myTabproduct" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab6" data-bs-toggle="tab" href="#home6" role="tab" aria-controls="home"
+                                   aria-selected="true">Description </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent2">
+                            <div class="tab-pane fade show active" id="home6" role="tabpanel" aria-labelledby="home-tab6">
+                                <div class="desc-text">
+                                    @markdown($produk->deskripsi)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4">
+                    <div class="pro-details-banner">
+                        <a href="shop.html"><img src="/img/banner/pro-details.jpg" alt=""></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- /bg_white -->
-
-    </main>
-    <!-- /main -->
+    </section>
+    <!-- shop-area end -->
 @endsection
