@@ -11,6 +11,9 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if (auth()->user()){
+            return redirect()->to('/customer');
+        }
         return view('auth.login');
     }
 
