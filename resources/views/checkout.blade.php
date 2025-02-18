@@ -68,7 +68,9 @@
                             <form action="/checkout-process" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="produk_id" value="{{ $produk->id }}">
-                                <input type="hidden" name="voucher_id" value="{{ $voucher->id }}">
+                                @if($voucher)
+                                    <input type="hidden" name="voucher_id" value="{{ $voucher->id }}">
+                                @endif
                                 <input type="hidden" name="qty" value="{{ $qty }}">
                                 <div class="total clearfix">TOTAL <span>{{ \App\Helpers\RupiahHelper::formatRupiah(($produk->harga_produk * $qty) - $diskon) }}</span></div>
                                 <span>Bukti Pembayaran</span>
