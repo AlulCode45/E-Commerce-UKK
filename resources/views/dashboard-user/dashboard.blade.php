@@ -100,7 +100,7 @@
                                         $diskon = ((($pembelian->produk->harga_produk * $pembelian->qty) * $pembelian->voucher->persen) / 100);
                                     @endphp
                                 @endif
-                                <td>{{ ($pembelian->produk->harga_produk * $pembelian->qty) - $diskon }}</td>
+                                <td>{{ \App\Helpers\RupiahHelper::formatRupiah(($pembelian->produk->harga_produk * $pembelian->qty) - $diskon ) }}</td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <span class="badge badge-success badge-dot m-r-10"></span>

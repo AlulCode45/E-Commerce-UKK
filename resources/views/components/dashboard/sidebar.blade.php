@@ -3,7 +3,7 @@
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
             <li class="nav-item">
-                <a class="" href="javascript:void(0);">
+                <a class="" href="/">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-dashboard"></i>
                                 </span>

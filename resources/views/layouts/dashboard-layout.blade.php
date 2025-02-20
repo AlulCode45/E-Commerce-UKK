@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Enlink - Admin Dashboard Template</title>
+    <title>AlseraStore - Customer Dashboard</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('dashboard/images/logo/favicon.png') }}">
@@ -39,11 +39,21 @@
 
         </div>
         <!-- Page Container END -->
-        
+
     </div>
 </div>
 
 
+<!--scrollup-->
+<script>
+    @if (session('error'))
+    alert("{{ session('error') }}");
+    @endif
+
+    @if (session('success'))
+    alert("{{ session('success')}}")
+    @endif
+</script>
 <!-- Core Vendors JS -->
 <script src="{{ asset('dashboard/js/vendors.min.js') }}"></script>
 

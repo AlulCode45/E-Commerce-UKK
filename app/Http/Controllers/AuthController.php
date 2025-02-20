@@ -11,8 +11,8 @@ class AuthController extends Controller
 {
     public function login()
     {
-        if (auth()->user()){
-            return redirect()->to('/customer');
+        if(auth()->user()){
+            return redirect()->to("customer");
         }
         return view('auth.login');
     }
@@ -33,5 +33,28 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->to('/login')->with('success', 'Anda berhasil logout');
+    }
+
+    function register()
+    {
+        return view('auth.register');
+    }
+
+    function registerProcess(Request $request)
+    {
+        $register = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'role' => 'user',
+        ];
+
+        if (\App\Models\User::create($register)) {
+            return redirect()->to('login')->with('success', 'Register berhasil');
+        } else {
+            return redirect()->back()->with('error', 'Register gagal!');
+        }
     }
 }

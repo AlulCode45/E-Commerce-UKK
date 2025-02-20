@@ -12,11 +12,9 @@
                             <input id="email" type="email" name="email" placeholder="Enter Username or Email address...">
                             <label for="pass">Password <span>**</span></label>
                             <input id="password" type="password" name="password" placeholder="Enter password...">
-
-
                             <button class="btn theme-btn-2 w-100" type="submit">Login Now</button>
                             <div class="or-divide"><span>or</span></div>
-                            <button class="btn theme-btn w-100">Register Now</button>
+                            <a href="/register" class="btn theme-btn w-100">Register Now</a>
                         </form>
                     </div>
                 </div>

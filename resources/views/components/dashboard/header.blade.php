@@ -1,16 +1,18 @@
 <!-- Header START -->
 <div class="header">
-    <div class="logo logo-dark">
-        <a href="index.html">
-            <img src="{{ asset('dashboard/images/logo/logo.png') }}" alt="Logo">
-            <img class="logo-fold" src="{{ asset('dashboard/images/logo/logo-fold.png') }}" alt="Logo">
-        </a>
+    <div class="logo logo-dark ">
+        <h2 class="p-3"><span class="text-warning">Alsera</span>Store</h2>
+{{--        <a href="index.html">--}}
+{{--            <img src="{{ asset('dashboard/images/logo/logo.png') }}" alt="Logo">--}}
+{{--            <img class="logo-fold" src="{{ asset('dashboard/images/logo/logo-fold.png') }}" alt="Logo">--}}
+{{--        </a>--}}
     </div>
     <div class="logo logo-white">
-        <a href="index.html">
-            <img src="{{ asset('dashboard/images/logo/logo-white.png') }}" alt="Logo">
-            <img class="logo-fold" src="{{ asset('dashboard/images/logo/logo-fold-white.png') }}" alt="Logo">
-        </a>
+        <h2>AlseraStore</h2>
+{{--        <a href="index.html">--}}
+{{--            <img src="{{ asset('dashboard/images/logo/logo-white.png') }}" alt="Logo">--}}
+{{--            <img class="logo-fold" src="{{ asset('dashboard/images/logo/logo-fold-white.png') }}" alt="Logo">--}}
+{{--        </a>--}}
     </div>
     <div class="nav-wrap">
         <ul class="nav-left">

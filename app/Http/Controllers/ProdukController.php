@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Voucher;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -36,7 +37,8 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        return view('detail-produk', compact('produk'));
+        $vouchers = Voucher::all();
+        return view('detail-produk', compact('produk','vouchers'));
     }
 
     /**

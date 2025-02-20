@@ -35,7 +35,11 @@
                                         @csrf
                                         <input type="hidden" value="{{ $produk->id }}" name="produk_id">
                                         <div class="d-flex">
-                                            <input class="form-control rounded-pill me-3" placeholder="Voucher" name="kode_voucher">
+                                            <select name="kode_voucher" class="form-control rounded-pill">
+                                                @foreach($vouchers as $voucher)
+                                                    <option value="{{ $voucher->kode_voucher }}">{{ $voucher->nama. "( $voucher->persen% )" }}</option>
+                                                @endforeach
+                                            </select>
                                             <div class="plus-minus">
                                                 <div class="cart-plus-minus"><input type="text" value="1" name="qty" /></div>
                                             </div>

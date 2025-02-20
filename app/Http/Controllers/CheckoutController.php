@@ -37,6 +37,9 @@ class CheckoutController extends Controller
         ]);
 
         if ($saveCheckout){
+            Voucher::query()->find($request->voucher_id)->update([
+                'stok' =>  - $request->qty,
+            ]);
             return redirect()->to('/checkout-done');
         }else{
             return back()->with('error','Terjadi Kesalahan');

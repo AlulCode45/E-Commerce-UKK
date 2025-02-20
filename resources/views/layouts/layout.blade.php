@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Vue - Clean Minimal eCommerce HTML Template</title>
+    <title>AlseraStora - Memenuhi Kebutuhan Harimu</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -107,7 +107,7 @@
                 <div class="col-xl-3 col-lg-5 col-md-6 ">
                     <div class="footer-widget mb-40">
                         <div class="footer-logo">
-                            <h2>AlseraStore</h2>
+                            <h2><span style="color: #FE4536;">Alsera</span>Store</h2>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore mag na
@@ -214,6 +214,16 @@
 </div> <!-- end fullscreen search -->
 
 
+<!--scrollup-->
+<script>
+    @if (session('error'))
+    alert("{{ session('error') }}");
+    @endif
+
+    @if (session('success'))
+    alert("{{ session('success')}}")
+    @endif
+</script>
 <!-- JS here -->
 <script src="/js/vendor/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
