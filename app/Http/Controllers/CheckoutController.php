@@ -14,6 +14,10 @@ class CheckoutController extends Controller
         $produk = Produk::query()->find($request->produk_id);
         $voucher = Voucher::where('kode_voucher', $request->kode_voucher)->first();
         $qty = $request->qty;
+
+        if($voucher && $qty > $voucher->jumlah){
+            return back()->with('error','Jumlah Penggunaan voucher melebihi jumlah voucher');
+        }
         return view('checkout', compact('produk', 'voucher','qty'));
     }
 
@@ -37,8 +41,9 @@ class CheckoutController extends Controller
         ]);
 
         if ($saveCheckout){
-            Voucher::query()->find($request->voucher_id)->update([
-                'stok' =>  - $request->qty,
+            $voucher = Voucher::query()->find($request->voucher_id);
+            $voucher->update([
+                'jumlah' =>  $voucher->stok - $request->qty,
             ]);
             return redirect()->to('/checkout-done');
         }else{

@@ -37,7 +37,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr class="cart-subtotal">
-                                    <th>Diskon ({{ $voucher->nama . ' - '. $voucher->persen }}%)</th>
+                                    <th>Diskon ({{ $voucher?->nama  . ' - '. $voucher?->persen }}%)</th>
                                     <td><span
                                             class="amount">{{ \App\Helpers\RupiahHelper::formatRupiah($diskon) }}</span>
                                     </td>

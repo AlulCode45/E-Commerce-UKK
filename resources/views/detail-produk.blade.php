@@ -35,13 +35,16 @@
                                         @csrf
                                         <input type="hidden" value="{{ $produk->id }}" name="produk_id">
                                         <div class="d-flex">
-                                            <select name="kode_voucher" class="form-control rounded-pill">
+                                            <select name="kode_voucher" class="form-control rounded-pill" id="voucher-select">
+                                                <option value="">Tanpa Diskon - Pesan Unlimited</option>
                                                 @foreach($vouchers as $voucher)
-                                                    <option value="{{ $voucher->kode_voucher }}">{{ $voucher->nama. "( $voucher->persen% )" }}</option>
+                                                    @if($voucher->jumlah > 0)
+                                                        <option value="{{ $voucher->kode_voucher }}">{{ $voucher->nama. "( $voucher->persen% ) - STOK: $voucher->jumlah"  }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                             <div class="plus-minus">
-                                                <div class="cart-plus-minus"><input type="text" value="1" name="qty" /></div>
+                                                <div class="cart-plus-minus"><input type="number" value="1" name="qty" id=""/></div>
                                             </div>
                                         </div>
                                         <div class="details-cart mt-40">
