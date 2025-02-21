@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\PenjualanExporter;
 use App\Filament\Resources\PenjualanResource\Pages;
 use App\Filament\Resources\PenjualanResource\RelationManagers;
 use App\Models\Penjualan;
+use Filament\Actions\ExportAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -96,6 +98,10 @@ class PenjualanResource extends Resource
             ])
             ->filters([
                 //
+            ])
+            ->headerActions([
+                Tables\Actions\ExportAction::make()
+                    ->exporter(PenjualanExporter::class)
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),

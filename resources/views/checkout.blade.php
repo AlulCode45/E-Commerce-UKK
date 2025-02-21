@@ -47,11 +47,11 @@
                                     <td>
                                         <ul>
                                             <li>
-                                                <input type="radio" checked>
+                                                <input type="radio" name="pengiriman" checked>
                                                 <label>Dijemput ( Gratis )</label>
                                             </li>
                                             <li>
-                                                <input type="radio" checked>
+                                                <input type="radio" name="pengiriman">
                                                 <label>Diantar ( Rp 30.000 )</label>
                                             </li>
                                         </ul>

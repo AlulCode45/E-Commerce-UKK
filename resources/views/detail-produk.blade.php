@@ -24,10 +24,11 @@
                             <a href="#">decor,</a>
                             <a href="#">furniture</a>
                         </div>
-                        <h2 class="pro-details-title mb-15">{{ $produk->nama_produk }}</h2>
+                        <h2 class="pro-details-title mb-15">{{ $produk->nama_produk }} </small></h2>
                         <div class="details-price mb-20">
                             <span>{{ \App\Helpers\RupiahHelper::formatRupiah($produk->harga_produk) }}</span>
                         </div>
+                        <span class="mb-3">STOK : {{ $produk->stok_produk }} </span>
                         <div class="product-variant">
                             <div class="product-action-details variant-item">
                                 <div class="product-details-action">
@@ -69,7 +70,7 @@
                         <div class="tab-content" id="myTabContent2">
                             <div class="tab-pane fade show active" id="home6" role="tabpanel" aria-labelledby="home-tab6">
                                 <div class="desc-text">
-                                    @markdown($produk->deskripsi)
+                                    @markdown($produk->deskripsi ?? '')
                                 </div>
                             </div>
                         </div>
