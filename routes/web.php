@@ -24,5 +24,5 @@ Route::middleware(\App\Http\Middleware\AuthMiddleware::class)->group(function ()
     Route::get('checkout-done', [\App\Http\Controllers\CheckoutController::class,'checkoutDone']);
 
     Route::get('/customer', [CustomerController::class,'index']);
-    Route::get('/konfirmasi-barang/{id}',[CustomerController::class,'konfirmasiPembelian']);
+    Route::post('/konfirmasi-barang/{id}',[CustomerController::class,'konfirmasiPembelian']);
 });

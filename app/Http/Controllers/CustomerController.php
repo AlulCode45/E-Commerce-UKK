@@ -10,34 +10,45 @@ class CustomerController extends Controller
     public function index()
     {
         $pembelians = Penjualan::query()
-            ->with(['produk','user','voucher'])
+            ->with(['produk', 'user', 'voucher'])
             ->where('user_id', auth()->user()->id)
             ->get();
 
         $menunggu = Penjualan::query()
             ->where('user_id', auth()->user()->id)
-            ->where('status','menunggu')
+            ->where('status', 'menunggu')
             ->count();
         $diproses = Penjualan::query()
             ->where('user_id', auth()->user()->id)
-            ->where('status','diproses')
+            ->where('status', 'diproses')
             ->count();
 
         $selesai = Penjualan::query()
             ->where('user_id', auth()->user()->id)
-            ->where('status','selesai')
+            ->where('status', 'selesai')
             ->count();
-        return view('dashboard-user.dashboard',compact('pembelians','menunggu','diproses','selesai'));
+        return view('dashboard-user.dashboard', compact('pembelians', 'menunggu', 'diproses', 'selesai'));
     }
 
-    public function konfirmasiPembelian($id)
+    public function konfirmasiPembelian($id, Request $request)
     {
-        $penjualan = Penjualan::query()->find($id);
+        if ($request->file('bukti_diterima')) {
+            $file = $request->file('bukti_diterima');
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'storage/bukti_diterima';
+            $file->move($tujuan_upload, $nama_file);
+        } else {
+            return back()->with('error', 'Terjadi Kesalahan');
+        }
 
-        if($penjualan->update(['status'=>'selesai'])){
-            return back()->with('success','Konfirmasi berhasil');
-        }else{
-            return back()->with('error','Konfirmasi gagal');
+        $penjualan = Penjualan::query()->find($id);
+        if ($penjualan->update([
+            'status' => 'selesai',
+            'bukti_diterima' => 'bukti_diterima/' . $nama_file,
+        ])) {
+            return back()->with('success', 'Konfirmasi berhasil');
+        } else {
+            return back()->with('error', 'Konfirmasi gagal');
         }
     }
 }

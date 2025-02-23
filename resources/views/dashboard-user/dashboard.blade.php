@@ -109,7 +109,14 @@
                                 </td>
                                 @if($pembelian->status == 'diproses')
                                     <td>
-                                        <a href="konfirmasi-barang/{{ $pembelian->id }}" class="btn btn-success">Diterima</a>
+                                        <form action="konfirmasi-barang/{{ $pembelian->id }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="d-flex mt-3">
+                                                <label for="">Bukti Pembayaran</label>
+                                                <input type="file" name="bukti_diterima" class="form-control">
+                                            </div>
+                                            <button type="submit" class="btn btn-success w-100">Diterima</button>
+                                        </form>
                                     </td>
                                 @endif
                             </tr>
