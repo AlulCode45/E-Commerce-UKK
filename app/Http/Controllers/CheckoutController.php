@@ -38,13 +38,16 @@ class CheckoutController extends Controller
             'user_id' => auth()->user()->id,
             'qty' => $request->qty,
             'bukti_pembayaran' => 'bukti_pembayaran/'.$nama_file,
+            'total' => $request->total,
         ]);
 
         if ($saveCheckout){
             $voucher = Voucher::query()->find($request->voucher_id);
-            $voucher->update([
-                'jumlah' =>  $voucher->stok - $request->qty,
-            ]);
+            if ($voucher){
+                $voucher->update([
+                    'jumlah' =>  $voucher->stok - $request->qty,
+                ]);
+            }
             return redirect()->to('/checkout-done');
         }else{
             return back()->with('error','Terjadi Kesalahan');

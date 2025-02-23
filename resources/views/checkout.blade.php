@@ -47,11 +47,11 @@
                                     <td>
                                         <ul>
                                             <li>
-                                                <input type="radio" name="pengiriman" checked>
-                                                <label>Dijemput ( Gratis )</label>
+                                                <input type="radio" name="pengiriman" value="diambil" checked>
+                                                <label>Diambil ( Gratis )</label>
                                             </li>
                                             <li>
-                                                <input type="radio" name="pengiriman">
+                                                <input type="radio" name="pengiriman" value="dikirim">
                                                 <label>Diantar ( Rp 30.000 )</label>
                                             </li>
                                         </ul>
@@ -99,6 +99,7 @@
                             <form action="/checkout-process" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="produk_id" value="{{ $produk->id }}">
+                                <input type="hidden" name="total" value="">
                                 @if($voucher)
                                     <input type="hidden" name="voucher_id" value="{{ $voucher->id }}">
                                 @endif
@@ -115,4 +116,49 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ambil elemen radio pengiriman
+            const radioButtons = document.querySelectorAll('input[name="pengiriman"]');
+            const totalElement = document.querySelector('.order-total .amount');
+            const inputTotal = document.querySelector('input[name="total"]');
+
+            // Ambil harga produk, jumlah, dan diskon dari PHP
+            let hargaProduk = {{ $produk->harga_produk }};
+            let qty = {{ $qty }};
+            let diskon = {{ $diskon }};
+            let biayaPengiriman = 0;
+
+            // Fungsi untuk memperbarui total
+            function updateTotal() {
+                let total = (hargaProduk * qty) - diskon + biayaPengiriman;
+
+                // Format angka ke dalam Rupiah
+                let formattedTotal = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(total);
+
+                // Update tampilan total di halaman
+                totalElement.textContent = formattedTotal;
+
+                // Update nilai total dalam input hidden untuk dikirim ke server
+                inputTotal.value = total;
+            }
+
+            // Tambahkan event listener pada setiap radio button
+            radioButtons.forEach(button => {
+                button.addEventListener('change', function () {
+                    // Tentukan biaya pengiriman berdasarkan pilihan pengguna
+                    biayaPengiriman = this.value === "dikirim" ? 30000 : 0;
+                    updateTotal();
+                });
+            });
+
+            // Panggil updateTotal saat halaman pertama kali dimuat
+            updateTotal();
+        });
+    </script>
+
 @endsection
