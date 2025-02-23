@@ -10,12 +10,12 @@
                         <form action="/register" method="post">
                             @csrf
                             <label for="name">Nama<span>**</span></label>
-                            <input id="email" type="text" name="name" placeholder="Masukan nama">
+                            <input id="name" type="text" name="name" placeholder="Masukan nama">
                             <label for="name">No Telepon<span>**</span></label>
-                            <input id="email" type="text" name="no_telp" placeholder="Masukan Nomor Telepon">
+                            <input id="phone" type="text" name="no_telp" placeholder="Masukan Nomor Telepon">
                             <label for="name">Alamat<span>**</span></label>
-                            <input id="email" type="text" name="alamat" placeholder="Masukan alamat">
-                            <label for="name">Email Address<span>**</span></label>
+                            <input id="address" type="text" name="alamat" placeholder="Masukan alamat">
+                            <label for="email">Email Address<span>**</span></label>
                             <input id="email" type="email" name="email" placeholder="Enter Username or Email address...">
                             <label for="pass">Password <span>**</span></label>
                             <input id="password" type="password" name="password" placeholder="Enter password...">
