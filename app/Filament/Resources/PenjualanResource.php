@@ -87,6 +87,13 @@ class PenjualanResource extends Resource
                         : ($penjualan->status === 'selesai' ? 'success' : 'danger')
                     )
                     ->searchable(),
+                Tables\Columns\TextColumn::make('pengiriman')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('total')
+                    ->money('IDR'),
+                Tables\Columns\ImageColumn::make('bukti_diterima')
+                    ->url(fn($record) => asset($record->bukti_diterima))
+                    ->height(100),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -97,34 +104,34 @@ class PenjualanResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
-            ])
-            ->headerActions([
-                Tables\Actions\ExportAction::make()
-                    ->exporter(PenjualanExporter::class)
-            ])
-            ->actions([
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\Action::make('Konfirmasi')
-                    ->hidden(fn(Penjualan $penjualan) => $penjualan->status == 'diproses' || $penjualan->status == 'selesai')
-                    ->label('Konfirmasi')
-                    ->action(function ($record) {
-                        $record->update(['status' => 'diproses']);
-                        Notification::make()
-                            ->title('Konfirmasi Berhasil')
-                            ->success()
-                            ->send();
-                    })
-                    ->requiresConfirmation()
-                    ->icon('heroicon-o-check')
-                    ->color('success')
-                    ->tooltip('Klik untuk mengonfirmasi')
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        //
+    ])
+        ->headerActions([
+            Tables\Actions\ExportAction::make()
+                ->exporter(PenjualanExporter::class)
+        ])
+        ->actions([
+            Tables\Actions\DeleteAction::make(),
+            Tables\Actions\Action::make('Konfirmasi')
+                ->hidden(fn(Penjualan $penjualan) => $penjualan->status == 'diproses' || $penjualan->status == 'selesai')
+                ->label('Konfirmasi')
+                ->action(function ($record) {
+                    $record->update(['status' => 'diproses']);
+                    Notification::make()
+                        ->title('Konfirmasi Berhasil')
+                        ->success()
+                        ->send();
+                })
+                ->requiresConfirmation()
+                ->icon('heroicon-o-check')
+                ->color('success')
+                ->tooltip('Klik untuk mengonfirmasi')
+        ])
+        ->bulkActions([
+            Tables\Actions\BulkActionGroup::make([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]),
+        ]);
     }
 
     public static function getRelations(): array
