@@ -17,8 +17,7 @@
                         <div class="col-xl-7">
                             <div class="slide-content">
                                 <span data-animation="fadeInRight" data-delay=".2s">Furniture Collection</span>
-                                <h1 data-animation="fadeInUp" data-delay=".5s">Synnes Dining
-                                    Chair Upholstered</h1>
+                                <h1 data-animation="fadeInUp" data-delay=".5s">Temukan Furniture Yang Anda Inginkan</h1>
                                 <div class="slide-btn">
                                     <a class="btn theme-btn" href="shop.html" data-animation="fadeInLeft"
                                        data-delay=".7s">shop now</a>
@@ -49,8 +48,7 @@
                         <div class="col-xl-7">
                             <div class="slide-content">
                                 <span data-animation="fadeInRight" data-delay=".2s">Furniture Collection</span>
-                                <h1 data-animation="fadeInUp" data-delay=".5s">Synnes Dining
-                                    Chair Upholstered</h1>
+                                <h1 data-animation="fadeInUp" data-delay=".5s">Lengkapi Perlengkapan Dengan Produk Berkualitas</h1>
                                 <div class="slide-btn">
                                     <a class="btn theme-btn" href="shop.html" data-animation="fadeInLeft"
                                        data-delay=".7s">shop now</a>
@@ -119,22 +117,10 @@
                                                 <a href="/produk/{{ $produk->id }}">
                                                     <img src="{{ '/storage/'.$produk->foto_produk }}" alt="">
                                                 </a>
-                                                <div class="product-action text-center">
-                                                    <a href="#" title="Shoppingb Cart">
-                                                        <i class="flaticon-shopping-cart"></i>
-                                                    </a>
-                                                    <a href="#" title="Quick View">
-                                                        <i class="flaticon-eye"></i>
-                                                    </a>
-                                                    <a href="#" data-bs-toggle="tooltip" data-placement="right"
-                                                       title="Compare">
-                                                        <i class="flaticon-compare"></i>
-                                                    </a>
-                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <h4>
-                                                    <a href="product-details.html">{{ $produk->nama_produk }}</a>
+                                                    <a href="/produk/{{ $produk->id }}">{{ $produk->nama_produk }}</a>
                                                 </h4>
                                                 <div class="product-meta">
                                                     <div class="pro-price">
