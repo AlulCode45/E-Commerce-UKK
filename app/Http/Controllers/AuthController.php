@@ -11,8 +11,10 @@ class AuthController extends Controller
 {
     public function login()
     {
-        if(auth()->user()){
+        if(auth()->user() && auth()->user()->role == 'user'){
             return redirect()->to("customer");
+        }elseif (auth()->user() && auth()->user()->role == 'admin') {
+            return redirect()->to("admin");
         }
         return view('auth.login');
     }
