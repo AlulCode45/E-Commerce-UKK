@@ -32,19 +32,18 @@ class CustomerController extends Controller
 
     public function konfirmasiPembelian($id, Request $request)
     {
+        $nama_file = NULL;
         if ($request->file('bukti_diterima')) {
             $file = $request->file('bukti_diterima');
             $nama_file = time() . "_" . $file->getClientOriginalName();
             $tujuan_upload = 'storage/bukti_diterima';
             $file->move($tujuan_upload, $nama_file);
-        } else {
-            return back()->with('error', 'Terjadi Kesalahan');
         }
 
         $penjualan = Penjualan::query()->find($id);
         if ($penjualan->update([
             'status' => 'selesai',
-            'bukti_diterima' => 'bukti_diterima/' . $nama_file,
+            'bukti_diterima' => ($nama_file ? 'bukti_diterima/' . $nama_file  : NULL),
         ])) {
             return back()->with('success', 'Konfirmasi berhasil');
         } else {
