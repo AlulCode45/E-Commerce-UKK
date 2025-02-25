@@ -19,12 +19,13 @@
                         </div>
                         <h2>Order completed!</h2>
                         <p>You will receive a confirmation email soon!</p>
+
+                        <a href="/customer" class="btn btn-warning">Kembali Dashboard</a>
                     </div>
                 </div>
             </div>
             <!-- /row -->
         </div>
         <!-- /container -->
-
     </main>
 @endsection
