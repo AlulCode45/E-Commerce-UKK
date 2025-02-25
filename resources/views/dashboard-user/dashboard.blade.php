@@ -109,18 +109,34 @@
                                 </td>
                                 @if($pembelian->status == 'diproses')
                                     <td>
-                                        <form action="konfirmasi-barang/{{ $pembelian->id }}" method="post" enctype="multipart/form-data">
+                                        <form action="konfirmasi-barang/{{ $pembelian->id }}" method="post"
+                                              enctype="multipart/form-data" id="verifikasi">
                                             @csrf
-                                            <div class="d-flex mt-3">
-                                                <label for="">Bukti Pembayaran</label>
-                                                <input type="file" name="bukti_diterima" class="form-control">
-                                            </div>
-                                            <button type="submit" class="btn btn-success w-100">Diterima</button>
+                                            @if($pembelian->pengiriman == 'dikirim')
+                                                <div class="d-flex mt-3">
+                                                    <label for="">Bukti Diterima</label>
+                                                    <input type="file" name="bukti_diterima" class="form-control">
+                                                </div>
+                                            @endif
+                                            <button type="button" id="confirm"
+                                                    class="btn btn-success w-100">{{ $pembelian->pengiriman == 'dikirim' ? 'Diterima' : 'Diambil' }}</button>
                                         </form>
                                     </td>
                                 @endif
                             </tr>
                         @endforeach
+                        <script>
+                            const dataPembelian = document.querySelectorAll('#confirm')
+                            dataPembelian.forEach((data, i) => {
+                                data.addEventListener('click', function () {
+                                    console.log(data)
+                                    var status = confirm('Konfirmasi diterima')
+                                    if (status) {
+                                        document.getElementById('verifikasi').submit();
+                                    }
+                                })
+                            })
+                        </script>
                         </tbody>
                     </table>
                 </div>
