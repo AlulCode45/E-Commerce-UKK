@@ -38,7 +38,7 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->widgets([
-                StatsOverview::class.
+                StatsOverview::class,
                 Widgets\AccountWidget::class,
 //                Widgets\FilamentInfoWidget::class,
             ])
